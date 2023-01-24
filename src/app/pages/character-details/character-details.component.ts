@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ErrorHandler, Input, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Result } from 'src/app/interfaces/ICharacters';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+import { IError } from 'src/app/interfaces/IError';
 
 @Component({
   selector: 'app-character-details',
@@ -10,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CharacterDetailsComponent implements OnInit {
   characterDetails!: Result;
+  message!: IError;
   constructor(
     private dataService: DataService,
     private activateRoute: ActivatedRoute
@@ -23,8 +26,17 @@ export class CharacterDetailsComponent implements OnInit {
   }
 
   getCharacterById(id: number) {
-    this.dataService.getCharacterById(id).subscribe((_characterDetails) => {
-      this.characterDetails = _characterDetails;
-    });
+    this.dataService
+      .getCharacterById(id)
+      .pipe(
+        catchError((err) => {
+          const { error } = err;
+          this.message = err;
+          return throwError(() => new Error(error));
+        })
+      )
+      .subscribe((_characterDetails) => {
+        this.characterDetails = _characterDetails;
+      });
   }
 }
