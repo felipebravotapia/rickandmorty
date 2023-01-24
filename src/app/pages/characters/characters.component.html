@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="row d-flex justify-content-center mt-5" *ngIf="errorMessage; else contenido">
+
+    <div class="col-6 text-center">
+      <img class="img-resultado" src="../../../assets/no-hay-resultados.png" alt="sin resultados">
+      <h3 class="mt-4">Sin resultado encontrado</h3>
+      <h5 class="mt-4">Puedes volver a cargar todos los personajes </h5>
+      <button type="button" class="btn btn-outline-success btn-lg" (click)="getAllCharacters(1)">Volver a cargar</button>
+    </div>
+
+
+
+  </div>
+
+  <ng-template #contenido>
+    <app-card
+      [_dataCharacter]="characters | paginate: { itemsPerPage: 20, currentPage: p, totalItems: totalPages }">
+    </app-card>
+
+    <div  class="rounded-2 border border-primary mb-3 bg-primary">
+      <div class="row d-flex justify-content-center">
+        <div class="col-auto py-2">
+          <pagination-controls [responsive]="true"  previousLabel="Átras" nextLabel="Siguiente" [maxSize]="maxSize"
+            (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+</div>

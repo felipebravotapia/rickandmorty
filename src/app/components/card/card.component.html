@@ -1,0 +1,32 @@
+  <div class="album py-1 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+
+
+        <div class="col-auto" *ngFor="let character of _dataCharacter" >
+          <div class="card shadow-sm">
+            <img [src]="character.image" [alt]="character.name"  class="bd-placeholder-img card-img-top" width="100%" height="225" >
+            <div class="card-body">
+              <h5 class="card-title">{{character.name}}</h5>
+              <ul>
+                <li><strong>Estado</strong> {{character.status}}</li>
+                <li><strong>Especie</strong> {{character.species}}</li>
+                <li><strong>Genero</strong> {{character.gender}}</li>
+              </ul>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/details', character?.id]">Ver Personaje</button>
+                </div>
+                <small class="text-muted"> <strong>Creado</strong> {{character.created | date:'dd/MM/yyy HH:mm:ss'}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
