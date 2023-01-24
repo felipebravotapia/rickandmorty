@@ -1,20 +1,31 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col">
-      <strong>Nombre </strong>{{characterDetails?.name}}
-    </div>
-    <div class="col">
-      <strong>Estado </strong>{{characterDetails?.status}}
-    </div>
-    <div class="col">
-      <strong>Especie </strong>{{characterDetails?.species}}
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <strong>Episodios ({{characterDetails?.episode?.length}})</strong>
+  <div class="row d-flex justify-content-center">
+    <div class="col-auto">
+      <div class="card" style="width: 28rem">
+        <img [src]="characterDetails?.image" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ characterDetails?.name }}</h5>
+          <p class="card-text">
+            Total de Episodios {{ characterDetails?.episode?.length }}
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Estado </strong>{{ characterDetails?.status }}
+          </li>
+          <li class="list-group-item">
+            <strong>Especie </strong>{{ characterDetails?.species }}
+          </li>
+          <li class="list-group-item">
+            <strong>Episodios ({{ characterDetails?.episode?.length }})</strong>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a class="card-link">{{
+            characterDetails?.created | date : "dd/MM/yyy HH:mm:ss"
+          }}</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
