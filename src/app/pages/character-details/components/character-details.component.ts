@@ -1,5 +1,5 @@
 import { Component, ErrorHandler, Input, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
 import { Result } from 'src/app/interfaces/ICharacters';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, throwError } from 'rxjs';

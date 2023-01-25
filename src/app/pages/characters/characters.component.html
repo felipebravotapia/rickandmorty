@@ -14,8 +14,7 @@
   </div>
 
   <ng-template #contenido>
-    <app-card
-      [_dataCharacter]="characters | paginate: { itemsPerPage: 20, currentPage: p, totalItems: totalPages }">
+    <app-card  [_dataCharacter]="characters | paginate: { itemsPerPage: 20, currentPage: p, totalItems: totalPages }">
     </app-card>
 
     <div  class="rounded-2 border border-primary bg-primary">
