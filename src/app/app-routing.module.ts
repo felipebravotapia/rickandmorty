@@ -16,11 +16,6 @@ const routes: Routes = [
         (m) => m.CharacterDetailsModule
       ),
   },
-
-  {
-    path: '',
-    component: CharactersComponent,
-  },
   {
     path: '**',
     component: CharactersComponent,
